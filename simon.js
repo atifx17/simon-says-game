@@ -17,6 +17,15 @@ document.addEventListener('keypress', function(){
         levelUp();
     }
 });
+document.addEventListener('click', function(){
+    if(started==false){
+        
+        console.log('game started');
+        started=true;
+
+        levelUp();
+    }
+});
 
 function gameFlash(btn){
     btn.classList.add('flash')
@@ -74,8 +83,9 @@ function checkAns(idx){
     }
 }
 
-function btnPress(){
+function btnPress(event){
     // console.log(this)
+    event.stopPropagation();
     let btn=this;
     userFlash(btn)
     // console.dir(btn)
@@ -86,6 +96,7 @@ function btnPress(){
 let allBtns=document.querySelectorAll('.btn');
 for(btn of allBtns){
     btn.addEventListener("click",btnPress);
+    
 }
 
 function reset(){
